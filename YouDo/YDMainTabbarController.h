@@ -1,5 +1,5 @@
 //
-//  YDViewController.h
+//  YDMainTabbarController.h
 //  YouDo
 //
 //  Created by Zhanserik Kenes on 04.04.14.
@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface YDViewController : UIViewController
-
-- (void) setWhiteBackButtonItem;
+@interface YDMainTabbarController : UITabBarController
 - (void)setTitle:(NSString *)title;
-
 @end

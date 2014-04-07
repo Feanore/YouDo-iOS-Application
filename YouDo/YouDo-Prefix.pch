@@ -14,3 +14,12 @@
     #import <UIKit/UIKit.h>
     #import <Foundation/Foundation.h>
 #endif
+
+#import "UIImage+Overlay.h"
+#import "UIImage+Scale.h"
+
+/*
+    Application settings
+ */
+#define MAIN_COLOR  [UIColor colorWithRed:64.0/255.0 green:153.0/255.0 blue:255.0/255.0 alpha:1.0]
+#define MAJOR_COLOR [UIColor whiteColor]

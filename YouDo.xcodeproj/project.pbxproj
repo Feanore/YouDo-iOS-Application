@@ -21,6 +21,20 @@
 		EB008ED318EDE77300F340FB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB008EB518EDE77200F340FB /* UIKit.framework */; };
 		EB008EDB18EDE77300F340FB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EB008ED918EDE77300F340FB /* InfoPlist.strings */; };
 		EB008EDD18EDE77300F340FB /* YouDoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008EDC18EDE77300F340FB /* YouDoTests.m */; };
+		EB008EEE18EDFAC300F340FB /* YDMainTabbarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008EED18EDFAC300F340FB /* YDMainTabbarController.m */; };
+		EB008EF218EDFF3B00F340FB /* YDTasksViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008EF118EDFF3B00F340FB /* YDTasksViewController.m */; };
+		EB008EF418EE027000F340FB /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB008EF318EE027000F340FB /* MapKit.framework */; };
+		EB008EF618EE027A00F340FB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB008EF518EE027A00F340FB /* CoreLocation.framework */; };
+		EB008EFA18EE079C00F340FB /* UIImage+Scale.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008EF918EE079C00F340FB /* UIImage+Scale.m */; };
+		EB008EFE18EE07AF00F340FB /* UIImage+Overlay.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008EFD18EE07AF00F340FB /* UIImage+Overlay.m */; };
+		EB008F0218EE085700F340FB /* 1x1.png in Resources */ = {isa = PBXBuildFile; fileRef = EB008F0018EE085700F340FB /* 1x1.png */; };
+		EB008F0318EE085700F340FB /* back_button_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EB008F0118EE085700F340FB /* back_button_icon.png */; };
+		EB008F0718EE0C6700F340FB /* YDProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008F0618EE0C6700F340FB /* YDProfileViewController.m */; };
+		EB008F0B18EE0C8D00F340FB /* YDNewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008F0A18EE0C8D00F340FB /* YDNewTaskViewController.m */; };
+		EB008F0F18EE0CAA00F340FB /* YDNotificationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008F0E18EE0CAA00F340FB /* YDNotificationViewController.m */; };
+		EB008F1418EE0CCB00F340FB /* YDExecutorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008F1318EE0CCB00F340FB /* YDExecutorsViewController.m */; };
+		EB008F1818EE810D00F340FB /* YDCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008F1718EE810D00F340FB /* YDCategoriesViewController.m */; };
+		EB008F1C18EE8E5000F340FB /* YDMyTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008F1B18EE8E5000F340FB /* YDMyTaskViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +67,30 @@
 		EB008ED818EDE77300F340FB /* YouDoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YouDoTests-Info.plist"; sourceTree = "<group>"; };
 		EB008EDA18EDE77300F340FB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EB008EDC18EDE77300F340FB /* YouDoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YouDoTests.m; sourceTree = "<group>"; };
+		EB008EEC18EDFAC300F340FB /* YDMainTabbarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDMainTabbarController.h; sourceTree = "<group>"; };
+		EB008EED18EDFAC300F340FB /* YDMainTabbarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDMainTabbarController.m; sourceTree = "<group>"; };
+		EB008EF018EDFF3B00F340FB /* YDTasksViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDTasksViewController.h; sourceTree = "<group>"; };
+		EB008EF118EDFF3B00F340FB /* YDTasksViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDTasksViewController.m; sourceTree = "<group>"; };
+		EB008EF318EE027000F340FB /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		EB008EF518EE027A00F340FB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		EB008EF818EE079C00F340FB /* UIImage+Scale.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Scale.h"; sourceTree = "<group>"; };
+		EB008EF918EE079C00F340FB /* UIImage+Scale.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Scale.m"; sourceTree = "<group>"; };
+		EB008EFC18EE07AF00F340FB /* UIImage+Overlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Overlay.h"; sourceTree = "<group>"; };
+		EB008EFD18EE07AF00F340FB /* UIImage+Overlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Overlay.m"; sourceTree = "<group>"; };
+		EB008F0018EE085700F340FB /* 1x1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 1x1.png; path = ImageSource/1x1.png; sourceTree = "<group>"; };
+		EB008F0118EE085700F340FB /* back_button_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = back_button_icon.png; path = ImageSource/back_button_icon.png; sourceTree = "<group>"; };
+		EB008F0518EE0C6700F340FB /* YDProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDProfileViewController.h; sourceTree = "<group>"; };
+		EB008F0618EE0C6700F340FB /* YDProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDProfileViewController.m; sourceTree = "<group>"; };
+		EB008F0918EE0C8D00F340FB /* YDNewTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDNewTaskViewController.h; sourceTree = "<group>"; };
+		EB008F0A18EE0C8D00F340FB /* YDNewTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDNewTaskViewController.m; sourceTree = "<group>"; };
+		EB008F0D18EE0CAA00F340FB /* YDNotificationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDNotificationViewController.h; sourceTree = "<group>"; };
+		EB008F0E18EE0CAA00F340FB /* YDNotificationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDNotificationViewController.m; sourceTree = "<group>"; };
+		EB008F1218EE0CCB00F340FB /* YDExecutorsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDExecutorsViewController.h; sourceTree = "<group>"; };
+		EB008F1318EE0CCB00F340FB /* YDExecutorsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDExecutorsViewController.m; sourceTree = "<group>"; };
+		EB008F1618EE810D00F340FB /* YDCategoriesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCategoriesViewController.h; sourceTree = "<group>"; };
+		EB008F1718EE810D00F340FB /* YDCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCategoriesViewController.m; sourceTree = "<group>"; };
+		EB008F1A18EE8E5000F340FB /* YDMyTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDMyTaskViewController.h; sourceTree = "<group>"; };
+		EB008F1B18EE8E5000F340FB /* YDMyTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDMyTaskViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB008EF618EE027A00F340FB /* CoreLocation.framework in Frameworks */,
+				EB008EF418EE027000F340FB /* MapKit.framework in Frameworks */,
 				EB008EB418EDE77200F340FB /* CoreGraphics.framework in Frameworks */,
 				EB008EB618EDE77200F340FB /* UIKit.framework in Frameworks */,
 				EB008EB218EDE77200F340FB /* Foundation.framework in Frameworks */,
@@ -101,6 +141,8 @@
 		EB008EB018EDE77200F340FB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EB008EF518EE027A00F340FB /* CoreLocation.framework */,
+				EB008EF318EE027000F340FB /* MapKit.framework */,
 				EB008EB118EDE77200F340FB /* Foundation.framework */,
 				EB008EB318EDE77200F340FB /* CoreGraphics.framework */,
 				EB008EB518EDE77200F340FB /* UIKit.framework */,
@@ -112,11 +154,10 @@
 		EB008EB718EDE77200F340FB /* YouDo */ = {
 			isa = PBXGroup;
 			children = (
-				EB008EC018EDE77200F340FB /* YDAppDelegate.h */,
-				EB008EC118EDE77200F340FB /* YDAppDelegate.m */,
-				EB008EC318EDE77300F340FB /* Main.storyboard */,
-				EB008EC618EDE77300F340FB /* YDViewController.h */,
-				EB008EC718EDE77300F340FB /* YDViewController.m */,
+				EB008EE918EDEBC200F340FB /* ApplicationDelegate */,
+				EB008EE818EDEBB300F340FB /* Controllers */,
+				EB008EE718EDEB9E00F340FB /* Views */,
+				EB008EE618EDEB9500F340FB /* Models */,
 				EB008EC918EDE77300F340FB /* Images.xcassets */,
 				EB008EB818EDE77200F340FB /* Supporting Files */,
 			);
@@ -150,6 +191,157 @@
 				EB008ED918EDE77300F340FB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EB008EE618EDEB9500F340FB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EB008EFB18EE07A000F340FB /* UIImage+Overlay */,
+				EB008EF718EE078800F340FB /* UIImage+Scale */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		EB008EE718EDEB9E00F340FB /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB008EFF18EE084600F340FB /* ImageSource */,
+				EB008EC318EDE77300F340FB /* Main.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		EB008EE818EDEBB300F340FB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EB008F1918EE8E3600F340FB /* MyTasksController */,
+				EB008F1518EE80EC00F340FB /* CategoriesController */,
+				EB008F1018EE0CB000F340FB /* ExecutorsController */,
+				EB008F0C18EE0C9200F340FB /* NotificationController */,
+				EB008F0818EE0C6F00F340FB /* NewTaskController */,
+				EB008F0418EE0C4D00F340FB /* ProfileController */,
+				EB008EEF18EDFF1500F340FB /* TasksController */,
+				EB008EEB18EDFA7000F340FB /* MainController */,
+				EB008EEA18EDEBF000F340FB /* BaseController */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		EB008EE918EDEBC200F340FB /* ApplicationDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				EB008EC018EDE77200F340FB /* YDAppDelegate.h */,
+				EB008EC118EDE77200F340FB /* YDAppDelegate.m */,
+			);
+			name = ApplicationDelegate;
+			sourceTree = "<group>";
+		};
+		EB008EEA18EDEBF000F340FB /* BaseController */ = {
+			isa = PBXGroup;
+			children = (
+				EB008EC618EDE77300F340FB /* YDViewController.h */,
+				EB008EC718EDE77300F340FB /* YDViewController.m */,
+			);
+			name = BaseController;
+			sourceTree = "<group>";
+		};
+		EB008EEB18EDFA7000F340FB /* MainController */ = {
+			isa = PBXGroup;
+			children = (
+				EB008EEC18EDFAC300F340FB /* YDMainTabbarController.h */,
+				EB008EED18EDFAC300F340FB /* YDMainTabbarController.m */,
+			);
+			name = MainController;
+			sourceTree = "<group>";
+		};
+		EB008EEF18EDFF1500F340FB /* TasksController */ = {
+			isa = PBXGroup;
+			children = (
+				EB008EF018EDFF3B00F340FB /* YDTasksViewController.h */,
+				EB008EF118EDFF3B00F340FB /* YDTasksViewController.m */,
+			);
+			name = TasksController;
+			sourceTree = "<group>";
+		};
+		EB008EF718EE078800F340FB /* UIImage+Scale */ = {
+			isa = PBXGroup;
+			children = (
+				EB008EF818EE079C00F340FB /* UIImage+Scale.h */,
+				EB008EF918EE079C00F340FB /* UIImage+Scale.m */,
+			);
+			name = "UIImage+Scale";
+			sourceTree = "<group>";
+		};
+		EB008EFB18EE07A000F340FB /* UIImage+Overlay */ = {
+			isa = PBXGroup;
+			children = (
+				EB008EFC18EE07AF00F340FB /* UIImage+Overlay.h */,
+				EB008EFD18EE07AF00F340FB /* UIImage+Overlay.m */,
+			);
+			name = "UIImage+Overlay";
+			sourceTree = "<group>";
+		};
+		EB008EFF18EE084600F340FB /* ImageSource */ = {
+			isa = PBXGroup;
+			children = (
+				EB008F0018EE085700F340FB /* 1x1.png */,
+				EB008F0118EE085700F340FB /* back_button_icon.png */,
+			);
+			name = ImageSource;
+			sourceTree = "<group>";
+		};
+		EB008F0418EE0C4D00F340FB /* ProfileController */ = {
+			isa = PBXGroup;
+			children = (
+				EB008F0518EE0C6700F340FB /* YDProfileViewController.h */,
+				EB008F0618EE0C6700F340FB /* YDProfileViewController.m */,
+			);
+			name = ProfileController;
+			sourceTree = "<group>";
+		};
+		EB008F0818EE0C6F00F340FB /* NewTaskController */ = {
+			isa = PBXGroup;
+			children = (
+				EB008F0918EE0C8D00F340FB /* YDNewTaskViewController.h */,
+				EB008F0A18EE0C8D00F340FB /* YDNewTaskViewController.m */,
+			);
+			name = NewTaskController;
+			sourceTree = "<group>";
+		};
+		EB008F0C18EE0C9200F340FB /* NotificationController */ = {
+			isa = PBXGroup;
+			children = (
+				EB008F0D18EE0CAA00F340FB /* YDNotificationViewController.h */,
+				EB008F0E18EE0CAA00F340FB /* YDNotificationViewController.m */,
+			);
+			name = NotificationController;
+			sourceTree = "<group>";
+		};
+		EB008F1018EE0CB000F340FB /* ExecutorsController */ = {
+			isa = PBXGroup;
+			children = (
+				EB008F1218EE0CCB00F340FB /* YDExecutorsViewController.h */,
+				EB008F1318EE0CCB00F340FB /* YDExecutorsViewController.m */,
+			);
+			name = ExecutorsController;
+			sourceTree = "<group>";
+		};
+		EB008F1518EE80EC00F340FB /* CategoriesController */ = {
+			isa = PBXGroup;
+			children = (
+				EB008F1618EE810D00F340FB /* YDCategoriesViewController.h */,
+				EB008F1718EE810D00F340FB /* YDCategoriesViewController.m */,
+			);
+			name = CategoriesController;
+			sourceTree = "<group>";
+		};
+		EB008F1918EE8E3600F340FB /* MyTasksController */ = {
+			isa = PBXGroup;
+			children = (
+				EB008F1A18EE8E5000F340FB /* YDMyTaskViewController.h */,
+				EB008F1B18EE8E5000F340FB /* YDMyTaskViewController.m */,
+			);
+			name = MyTasksController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -229,9 +421,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB008F0218EE085700F340FB /* 1x1.png in Resources */,
 				EB008ECA18EDE77300F340FB /* Images.xcassets in Resources */,
 				EB008EBC18EDE77200F340FB /* InfoPlist.strings in Resources */,
 				EB008EC518EDE77300F340FB /* Main.storyboard in Resources */,
+				EB008F0318EE085700F340FB /* back_button_icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,9 +444,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB008EF218EDFF3B00F340FB /* YDTasksViewController.m in Sources */,
+				EB008F0718EE0C6700F340FB /* YDProfileViewController.m in Sources */,
 				EB008EBE18EDE77200F340FB /* main.m in Sources */,
+				EB008EEE18EDFAC300F340FB /* YDMainTabbarController.m in Sources */,
+				EB008F1418EE0CCB00F340FB /* YDExecutorsViewController.m in Sources */,
+				EB008F0F18EE0CAA00F340FB /* YDNotificationViewController.m in Sources */,
+				EB008F1C18EE8E5000F340FB /* YDMyTaskViewController.m in Sources */,
 				EB008EC818EDE77300F340FB /* YDViewController.m in Sources */,
+				EB008EFE18EE07AF00F340FB /* UIImage+Overlay.m in Sources */,
+				EB008EFA18EE079C00F340FB /* UIImage+Scale.m in Sources */,
+				EB008F1818EE810D00F340FB /* YDCategoriesViewController.m in Sources */,
 				EB008EC218EDE77200F340FB /* YDAppDelegate.m in Sources */,
+				EB008F0B18EE0C8D00F340FB /* YDNewTaskViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,6 +35,10 @@
 		EB008F1418EE0CCB00F340FB /* YDExecutorsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008F1318EE0CCB00F340FB /* YDExecutorsViewController.m */; };
 		EB008F1818EE810D00F340FB /* YDCategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008F1718EE810D00F340FB /* YDCategoriesViewController.m */; };
 		EB008F1C18EE8E5000F340FB /* YDMyTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB008F1B18EE8E5000F340FB /* YDMyTaskViewController.m */; };
+		EB2B5A0418F9CB6A0089EF73 /* YDTaskViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2B5A0318F9CB6A0089EF73 /* YDTaskViewCell.m */; };
+		EB2B5A0818F9D6DF0089EF73 /* YDCategoryViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB2B5A0718F9D6DF0089EF73 /* YDCategoryViewCell.m */; };
+		EB2B5A0B18F9D93E0089EF73 /* star_highlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = EB2B5A0918F9D93E0089EF73 /* star_highlighted.png */; };
+		EB2B5A0C18F9D93E0089EF73 /* star_normal.png in Resources */ = {isa = PBXBuildFile; fileRef = EB2B5A0A18F9D93E0089EF73 /* star_normal.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +95,12 @@
 		EB008F1718EE810D00F340FB /* YDCategoriesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCategoriesViewController.m; sourceTree = "<group>"; };
 		EB008F1A18EE8E5000F340FB /* YDMyTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDMyTaskViewController.h; sourceTree = "<group>"; };
 		EB008F1B18EE8E5000F340FB /* YDMyTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDMyTaskViewController.m; sourceTree = "<group>"; };
+		EB2B5A0218F9CB6A0089EF73 /* YDTaskViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDTaskViewCell.h; sourceTree = "<group>"; };
+		EB2B5A0318F9CB6A0089EF73 /* YDTaskViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDTaskViewCell.m; sourceTree = "<group>"; };
+		EB2B5A0618F9D6DF0089EF73 /* YDCategoryViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCategoryViewCell.h; sourceTree = "<group>"; };
+		EB2B5A0718F9D6DF0089EF73 /* YDCategoryViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCategoryViewCell.m; sourceTree = "<group>"; };
+		EB2B5A0918F9D93E0089EF73 /* star_highlighted.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_highlighted.png; path = ImageSource/star_highlighted.png; sourceTree = "<group>"; };
+		EB2B5A0A18F9D93E0089EF73 /* star_normal.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = star_normal.png; path = ImageSource/star_normal.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -257,6 +267,7 @@
 		EB008EEF18EDFF1500F340FB /* TasksController */ = {
 			isa = PBXGroup;
 			children = (
+				EB2B59FE18F9CB100089EF73 /* TaskCell */,
 				EB008EF018EDFF3B00F340FB /* YDTasksViewController.h */,
 				EB008EF118EDFF3B00F340FB /* YDTasksViewController.m */,
 			);
@@ -284,6 +295,8 @@
 		EB008EFF18EE084600F340FB /* ImageSource */ = {
 			isa = PBXGroup;
 			children = (
+				EB2B5A0918F9D93E0089EF73 /* star_highlighted.png */,
+				EB2B5A0A18F9D93E0089EF73 /* star_normal.png */,
 				EB008F0018EE085700F340FB /* 1x1.png */,
 				EB008F0118EE085700F340FB /* back_button_icon.png */,
 			);
@@ -329,6 +342,7 @@
 		EB008F1518EE80EC00F340FB /* CategoriesController */ = {
 			isa = PBXGroup;
 			children = (
+				EB2B5A0518F9D6BC0089EF73 /* CategoryCell */,
 				EB008F1618EE810D00F340FB /* YDCategoriesViewController.h */,
 				EB008F1718EE810D00F340FB /* YDCategoriesViewController.m */,
 			);
@@ -342,6 +356,24 @@
 				EB008F1B18EE8E5000F340FB /* YDMyTaskViewController.m */,
 			);
 			name = MyTasksController;
+			sourceTree = "<group>";
+		};
+		EB2B59FE18F9CB100089EF73 /* TaskCell */ = {
+			isa = PBXGroup;
+			children = (
+				EB2B5A0218F9CB6A0089EF73 /* YDTaskViewCell.h */,
+				EB2B5A0318F9CB6A0089EF73 /* YDTaskViewCell.m */,
+			);
+			name = TaskCell;
+			sourceTree = "<group>";
+		};
+		EB2B5A0518F9D6BC0089EF73 /* CategoryCell */ = {
+			isa = PBXGroup;
+			children = (
+				EB2B5A0618F9D6DF0089EF73 /* YDCategoryViewCell.h */,
+				EB2B5A0718F9D6DF0089EF73 /* YDCategoryViewCell.m */,
+			);
+			name = CategoryCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,6 +456,8 @@
 				EB008F0218EE085700F340FB /* 1x1.png in Resources */,
 				EB008ECA18EDE77300F340FB /* Images.xcassets in Resources */,
 				EB008EBC18EDE77200F340FB /* InfoPlist.strings in Resources */,
+				EB2B5A0B18F9D93E0089EF73 /* star_highlighted.png in Resources */,
+				EB2B5A0C18F9D93E0089EF73 /* star_normal.png in Resources */,
 				EB008EC518EDE77300F340FB /* Main.storyboard in Resources */,
 				EB008F0318EE085700F340FB /* back_button_icon.png in Resources */,
 			);
@@ -448,8 +482,10 @@
 				EB008F0718EE0C6700F340FB /* YDProfileViewController.m in Sources */,
 				EB008EBE18EDE77200F340FB /* main.m in Sources */,
 				EB008EEE18EDFAC300F340FB /* YDMainTabbarController.m in Sources */,
+				EB2B5A0418F9CB6A0089EF73 /* YDTaskViewCell.m in Sources */,
 				EB008F1418EE0CCB00F340FB /* YDExecutorsViewController.m in Sources */,
 				EB008F0F18EE0CAA00F340FB /* YDNotificationViewController.m in Sources */,
+				EB2B5A0818F9D6DF0089EF73 /* YDCategoryViewCell.m in Sources */,
 				EB008F1C18EE8E5000F340FB /* YDMyTaskViewController.m in Sources */,
 				EB008EC818EDE77300F340FB /* YDViewController.m in Sources */,
 				EB008EFE18EE07AF00F340FB /* UIImage+Overlay.m in Sources */,
@@ -665,6 +701,7 @@
 				EB008EE218EDE77300F340FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EB008EE318EDE77300F340FB /* Build configuration list for PBXNativeTarget "YouDoTests" */ = {
 			isa = XCConfigurationList;
@@ -673,6 +710,7 @@
 				EB008EE518EDE77300F340FB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

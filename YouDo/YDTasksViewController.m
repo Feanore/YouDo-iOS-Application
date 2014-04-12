@@ -7,6 +7,7 @@
 //
 
 #import "YDTasksViewController.h"
+#import "YDTaskViewCell.h"
 #import <MapKit/MapKit.h>
 
 @interface YDTasksViewController ()
@@ -180,17 +181,23 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = nil;
+    YDTaskViewCell *cell = nil;
     cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell"];
     
     if(!cell){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"eventCell"];
+        cell = [[YDTaskViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"eventCell"];
     }
     
     if (self.representingType == byDistance)
-        cell.textLabel.text = @"Sorted by distance";
+        cell.titleLabel.text = @"Need iOS developer with Mac :D";
     else if (self.representingType == byPrice)
-        cell.textLabel.text = @"Sorted by price";
+        cell.titleLabel.text = @"Need Slaves for some black job";
+    
+    cell.subtitleLabel.text = @"Open until 17:00, 17 April";
+    
+    cell.iconImage.backgroundColor = [UIColor orangeColor];
+    
+    cell.priceLabel.text = @"20000";
     
     return cell;
 }

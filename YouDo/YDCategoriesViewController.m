@@ -7,8 +7,9 @@
 //
 
 #import "YDCategoriesViewController.h"
-
+#import "YDCategoryViewCell.h"
 @interface YDCategoriesViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *categoriesTableView;
 
 @end
 
@@ -34,7 +35,8 @@
     self.navigationItem.rightBarButtonItem = cancel;
     cancel.tintColor = MAJOR_COLOR;
     
-    
+    self.categoriesTableView.dataSource = self;
+    self.categoriesTableView.delegate   = self;
 }
 - (void) dissmissControllerView{
     [self dismissViewControllerAnimated:YES
@@ -46,4 +48,32 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 30;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    YDCategoryViewCell *cell = nil;
+    cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell"];
+    
+    if(!cell){
+        cell = [[YDCategoryViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"eventCell"];
+    }
+
+
+    
+    cell.iconImage.backgroundColor = [UIColor orangeColor];
+    
+    cell.titleLabel.text = @"Category";
+    
+    return cell;
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 60.0;
+}
 @end

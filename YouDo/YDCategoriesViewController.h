@@ -8,6 +8,6 @@
 
 #import "YDViewController.h"
 
-@interface YDCategoriesViewController : YDViewController
+@interface YDCategoriesViewController : YDViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

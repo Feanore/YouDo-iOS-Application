@@ -31,6 +31,21 @@
 	// Do any additional setup after loading the view.
     [self.navigationController.navigationBar setTranslucent:NO];
     [self setTitle:NSLocalizedString(@"My Profile", nil)];
+    
+    UIImage *settingsIcon = [[UIImage imageNamed:@"settings.png"] scaledToSize:CGSizeMake(25, 25)];
+    UIBarButtonItem *settings = [[UIBarButtonItem alloc] initWithImage:settingsIcon
+                                                                 style:UIBarButtonItemStylePlain
+                                                                target:self
+                                                                action:@selector(presentSettingsView)];
+    settings.tintColor = MAJOR_COLOR;
+    self.navigationItem.rightBarButtonItem = settings;
+    
+}
+- (void) presentSettingsView{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    YDViewController *controller = [storyboard instantiateViewControllerWithIdentifier:@"settingsController"];
+    
+    [self.navigationController pushViewController:controller animated:YES];
 }
 
 - (void)didReceiveMemoryWarning

@@ -31,6 +31,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 
+    self.selectedIndex = 0;
     self.tabBar.translucent = NO;
     
     NSDictionary *paramsNormal = [[NSDictionary alloc] initWithObjectsAndKeys:[UIColor whiteColor], NSForegroundColorAttributeName, nil];

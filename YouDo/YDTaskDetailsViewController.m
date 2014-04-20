@@ -36,6 +36,8 @@
 @property (nonatomic) UIView          *addressView;
 
 @property (nonatomic) UIView          *phoneView;
+@property (nonatomic) UITextField     *stateNumberTextField;
+@property (nonatomic) UITextField     *phoneNumberTextField;
 
 @property (nonatomic) UIView          *priceView;
 
@@ -53,21 +55,49 @@
     }
     return self;
 }
-
+- (void) viewDidDisappear:(BOOL)animated{
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillShowNotification
+                                                  object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:UIKeyboardWillHideNotification
+                                                  object:nil];
+    
+}
+- (void) viewWillAppear:(BOOL)animated{
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidShow:)
+                                                 name:UIKeyboardWillShowNotification
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardDidHide:)
+                                                 name:UIKeyboardWillHideNotification
+                                               object:nil];
+    
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+
+    
+    
     [self setWhiteBackButtonItem];
     [self setTitle:@"Category"];
     
-    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 840)];
+    self.contentView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 800)];
     
     self.scrollView = [[UIScrollView alloc] initWithFrame:self.view.frame];
     [self.scrollView setContentSize:self.contentView.frame.size];
     [self.scrollView addSubview:self.contentView];
-    [self.view addSubview:self.scrollView];
+    self.scrollView.delegate = self;
     
+    [self.view addSubview:self.scrollView];
     self.contentView.backgroundColor = [UIColor lightGrayColor];
     
     /*
@@ -224,6 +254,8 @@
                                                                        self.view.frame.size.width - MARGIN_LEFT*2, 400)];
     self.additionalInfoView.backgroundColor = [UIColor clearColor];
     
+    [self.contentView addSubview:self.additionalInfoView];
+    
     width = (self.additionalInfoView.frame.size.width - 10)/2;
     /*
         Date view
@@ -234,7 +266,6 @@
                                                              70)];
     self.dateView.backgroundColor = [UIColor whiteColor];
     
-    
     [self.additionalInfoView addSubview:self.dateView];
     
     
@@ -243,8 +274,19 @@
     dateLabel.text = NSLocalizedString(@"Date and Time", nil);
     dateLabel.textAlignment = NSTextAlignmentCenter;
     dateLabel.textColor = [UIColor lightGrayColor];
-    
     [self.dateView addSubview:dateLabel];
+    
+    self.dateTextField = [[UITextField alloc] initWithFrame:CGRectMake(PADDING_LEFT, 30, width - PADDING_LEFT*2, 30)];
+    self.dateTextField.layer.masksToBounds = YES;
+    self.dateTextField.layer.borderWidth = 0.5f;
+    self.dateTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    UIDatePicker *picker = [[UIDatePicker alloc] init];
+    
+    self.dateTextField.inputView = picker;
+    [self.dateView addSubview:self.dateTextField];
+    
+   
     
     /*
         Image Picker View
@@ -257,7 +299,26 @@
     
     [self.additionalInfoView addSubview:self.imagePickView];
     
-    [self.contentView addSubview:self.additionalInfoView];
+    UILabel *photoLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, width, 30)];
+    
+    photoLabel.text = NSLocalizedString(@"Photo", nil);
+    photoLabel.textAlignment = NSTextAlignmentCenter;
+    photoLabel.textColor = [UIColor lightGrayColor];
+    [self.imagePickView addSubview:photoLabel];
+    
+    UIButton *photoButton = [[UIButton alloc] initWithFrame:CGRectMake(PADDING_LEFT, 30, width - PADDING_LEFT*2, 30)];
+    
+    [photoButton addTarget:self
+                    action:@selector(imagePickerButtonDidPress:)
+          forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIImageView *photoImage = [[UIImageView alloc] initWithFrame:CGRectMake(50, 0, 30, 30)];
+    photoImage.image = [[UIImage imageNamed:@"camera.png"] imageWithColor:[UIColor lightGrayColor]];
+    
+    [photoButton addSubview:photoImage];
+    
+    [self.imagePickView addSubview:photoButton];
     
     /*
         Address View
@@ -268,6 +329,25 @@
                                                                self.view.frame.size.width - MARGIN_LEFT*2,
                                                                 40)];
     self.addressView.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *addressButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
+    [addressButton addTarget:self
+                      action:@selector(selectAddressButtonDidPress)
+            forControlEvents:UIControlEventTouchUpInside];
+    
+    UILabel *buttonTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 200, 40)];
+    buttonTitleLabel.text = NSLocalizedString(@"Select address", nil);
+    buttonTitleLabel.textColor = [UIColor lightGrayColor];
+    buttonTitleLabel.textAlignment = NSTextAlignmentLeft;
+    
+    [addressButton addSubview:buttonTitleLabel];
+    
+    UIImageView *arrowImage = [[UIImageView alloc] initWithFrame:CGRectMake(290, 10, 13, 20)];
+    arrowImage.image = [[UIImage imageNamed:@"arrow_right_gray"] imageWithColor:[UIColor lightGrayColor]];
+    
+    [addressButton addSubview:arrowImage];
+    
+    [self.addressView addSubview:addressButton];
     [self.additionalInfoView addSubview:self.addressView];
     
     /*
@@ -279,10 +359,29 @@
     self.phoneView = [[UIView alloc] initWithFrame:CGRectMake(0,
                                                              verticalOffset,
                                                              self.view.frame.size.width - MARGIN_LEFT*2,
-                                                              120)];
+                                                              80)];
     
     self.phoneView.backgroundColor = [UIColor whiteColor];
     
+    UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, self.phoneView.frame.size.width, 40)];
+    phoneLabel.text = NSLocalizedString(@"Your phone number", nil);
+    phoneLabel.textColor = [UIColor lightGrayColor];
+    [self.phoneView addSubview:phoneLabel];
+    
+    self.stateNumberTextField = [[UITextField alloc] initWithFrame:CGRectMake(PADDING_LEFT, 40, 50, 30)];
+    self.stateNumberTextField.text = @"+7";
+    self.stateNumberTextField.textAlignment = NSTextAlignmentRight;
+    self.stateNumberTextField.layer.masksToBounds = YES;
+    self.stateNumberTextField.layer.borderWidth = 0.5f;
+    self.stateNumberTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    [self.phoneView addSubview:self.stateNumberTextField];
+    
+    CGFloat offset = self.stateNumberTextField.frame.origin.x + self.stateNumberTextField.frame.size.width + PADDING_LEFT;
+    self.phoneNumberTextField = [[UITextField alloc] initWithFrame:CGRectMake(offset, 40, 230, 30)];
+    self.phoneNumberTextField.layer.masksToBounds = YES;
+    self.phoneNumberTextField.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.phoneNumberTextField.layer.borderWidth = 0.5f;
+    [self.phoneView addSubview:self.phoneNumberTextField];
     [self.additionalInfoView addSubview:self.phoneView];
     
     
@@ -297,6 +396,25 @@
                                                               self.view.frame.size.width - MARGIN_LEFT*2,
                                                               40)];
     self.priceView.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *priceButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
+    [priceButton addTarget:self
+                      action:@selector(taskCostButtonDidPress)
+            forControlEvents:UIControlEventTouchUpInside];
+    
+    buttonTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 200, 40)];
+    buttonTitleLabel.text = NSLocalizedString(@"The cost of the task", nil);
+    buttonTitleLabel.textColor = [UIColor lightGrayColor];
+    buttonTitleLabel.textAlignment = NSTextAlignmentLeft;
+    
+    [priceButton addSubview:buttonTitleLabel];
+    
+    arrowImage = [[UIImageView alloc] initWithFrame:CGRectMake(290, 10, 13, 20)];
+    arrowImage.image = [[UIImage imageNamed:@"arrow_right_gray"] imageWithColor:[UIColor lightGrayColor]];
+
+    [priceButton addSubview:arrowImage];
+    [self.priceView addSubview:priceButton];
+    
     [self.additionalInfoView addSubview:self.priceView];
     
     /*
@@ -310,6 +428,25 @@
                                                                              self.view.frame.size.width - MARGIN_LEFT*2,
                                                                              40)];
     self.additionalConditionsView.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *conditionsButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 300, 40)];
+    [conditionsButton addTarget:self
+                    action:@selector(conditionsButtonDidPress)
+          forControlEvents:UIControlEventTouchUpInside];
+    
+    buttonTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 200, 40)];
+    buttonTitleLabel.text = NSLocalizedString(@"Additional Conditions", nil);
+    buttonTitleLabel.textColor = [UIColor lightGrayColor];
+    buttonTitleLabel.textAlignment = NSTextAlignmentLeft;
+    
+    [conditionsButton addSubview:buttonTitleLabel];
+    
+    arrowImage = [[UIImageView alloc] initWithFrame:CGRectMake(290, 10, 13, 20)];
+    arrowImage.image = [[UIImage imageNamed:@"arrow_right_gray"] imageWithColor:[UIColor lightGrayColor]];
+    
+    [conditionsButton addSubview:arrowImage];
+    
+    [self.additionalConditionsView addSubview:conditionsButton];
     [self.additionalInfoView addSubview:self.additionalConditionsView];
     
     /*
@@ -413,16 +550,102 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void) keyboardDidShow:(id) sender{
+    CGRect frame = self.scrollView.frame;
+    frame.size.height -= 216;
+    [UIView animateWithDuration:0.3f
+                     animations:^(void){
+                         self.scrollView.frame = frame;
+                     }
+                     completion:^(BOOL finished){
+        
+                     }];
 }
-*/
+- (void) keyboardDidHide:(id) sender{
+    CGRect frame = self.scrollView.frame;
+    frame.size.height += 216;
+    [UIView animateWithDuration:0.3f
+                     animations:^(void){
+                         self.scrollView.frame = frame;
+                     }
+                     completion:^(BOOL finished){
+                         
+                     }];
+}
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.titleTextField       resignFirstResponder];
+    [self.descriptionTextView  resignFirstResponder];
+    [self.dateTextField        resignFirstResponder];
+    [self.stateNumberTextField resignFirstResponder];
+    [self.phoneNumberTextField resignFirstResponder];
+    [self.privateInfoTextView  resignFirstResponder];
+}
+- (void) imagePickerButtonDidPress: (UIButton *) sender{
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@""
+															 delegate:(id)self
+													cancelButtonTitle:NSLocalizedString(@"Cancel", nil)
+											   destructiveButtonTitle:nil
+													otherButtonTitles:NSLocalizedString(@"Take photo", nil), NSLocalizedString(@"Choose from gallery", nil), nil];
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    switch (buttonIndex) {
+            
+        case 0:
+            [self takePhotoFromCamera];
+            break;
+        case 1:
+            [self takePhotoFromAlbum];
+            break;
+        default:
+            break;
+    }
+}
+
+-(void)takePhotoFromCamera{
+    
+//    UIStoryboard *sb                    = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+//    AVCamViewController *cameraView     = [sb instantiateViewControllerWithIdentifier:@"cameraView"];
+//    cameraView.previousController       = self;
+//    cameraView.viewController           = RegistrationController;
+//    
+//    [self presentViewController:cameraView
+//                       animated:YES
+//                     completion:nil];
+    
+}
+-(void)takePhotoFromAlbum{
+    
+//    self.photoPicker               = [[UIImagePickerController alloc] init];
+//    self.photoPicker.delegate      = self;
+//    self.photoPicker.sourceType    = UIImagePickerControllerSourceTypePhotoLibrary;
+//    self.photoPicker.allowsEditing = YES;
+//    
+//    [self presentViewController:photoPicker
+//                       animated:YES
+//                     completion:NULL];
+}
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+//    UIImage *image = [info valueForKey:UIImagePickerControllerEditedImage];
+//    NSLog(@"didFinishPicking");
+//    self.photoPlaceholder.image = image;
+//    self.photoPicked = YES;
+//    [[SFDefaultUser sharedSFUserDefaults] setMSizedImage:image];
+//    [[SFDefaultUser sharedSFUserDefaults] setBSizedImage:[info valueForKey:UIImagePickerControllerOriginalImage]];
+//    [self.photoPicker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void) selectAddressButtonDidPress{
+    
+}
+- (void) taskCostButtonDidPress{
+    
+}
+- (void) conditionsButtonDidPress{
+    
+}
 
 @end

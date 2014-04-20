@@ -44,6 +44,8 @@
 		EB5B2AC718FC7E6F00C3119A /* YDCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EB5B2AC618FC7E6F00C3119A /* YDCategoryCell.m */; };
 		EB8D98FF190187550065A6F3 /* YDTaskDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8D98FE190187550065A6F3 /* YDTaskDetailsViewController.m */; };
 		EB8D990319018E8F0065A6F3 /* YDTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8D990219018E8F0065A6F3 /* YDTextView.m */; };
+		EBFC2B7C1904595F007490AC /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = EBFC2B7B1904595F007490AC /* camera.png */; };
+		EBFC2B7E19045D46007490AC /* arrow_right_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = EBFC2B7D19045D46007490AC /* arrow_right_gray.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,6 +117,8 @@
 		EB8D98FE190187550065A6F3 /* YDTaskDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDTaskDetailsViewController.m; sourceTree = "<group>"; };
 		EB8D990119018E8F0065A6F3 /* YDTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDTextView.h; sourceTree = "<group>"; };
 		EB8D990219018E8F0065A6F3 /* YDTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDTextView.m; sourceTree = "<group>"; };
+		EBFC2B7B1904595F007490AC /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera.png; path = ImageSource/camera.png; sourceTree = "<group>"; };
+		EBFC2B7D19045D46007490AC /* arrow_right_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_right_gray.png; path = ImageSource/arrow_right_gray.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -312,6 +316,8 @@
 		EB008EFF18EE084600F340FB /* ImageSource */ = {
 			isa = PBXGroup;
 			children = (
+				EBFC2B7D19045D46007490AC /* arrow_right_gray.png */,
+				EBFC2B7B1904595F007490AC /* camera.png */,
 				EB5B2ABE18FC798A00C3119A /* settings.png */,
 				EB2B5A0918F9D93E0089EF73 /* star_highlighted.png */,
 				EB2B5A0A18F9D93E0089EF73 /* star_normal.png */,
@@ -512,8 +518,10 @@
 				EB008F0218EE085700F340FB /* 1x1.png in Resources */,
 				EB008ECA18EDE77300F340FB /* Images.xcassets in Resources */,
 				EB008EBC18EDE77200F340FB /* InfoPlist.strings in Resources */,
+				EBFC2B7C1904595F007490AC /* camera.png in Resources */,
 				EB2B5A0B18F9D93E0089EF73 /* star_highlighted.png in Resources */,
 				EB2B5A0C18F9D93E0089EF73 /* star_normal.png in Resources */,
+				EBFC2B7E19045D46007490AC /* arrow_right_gray.png in Resources */,
 				EB008EC518EDE77300F340FB /* Main.storyboard in Resources */,
 				EB008F0318EE085700F340FB /* back_button_icon.png in Resources */,
 			);

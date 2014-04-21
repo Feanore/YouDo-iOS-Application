@@ -7,6 +7,10 @@
 //
 
 #import "YDTaskDetailsViewController.h"
+#import "YDAddressViewController.h"
+#import "YDAdditionalConViewController.h"
+#import "YDCostViewController.h"
+
 #import "YDTextView.h"
 
 #define MARGIN_TOP  10
@@ -14,6 +18,8 @@
 #define PADDING_LEFT 10
 
 @interface YDTaskDetailsViewController ()
+
+@property (nonatomic) UIImagePickerController *pickerController;
 
 @property (nonatomic) UIScrollView    *scrollView;
 @property (nonatomic) UIView          *contentView;
@@ -83,9 +89,6 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-
-    
     
     [self setWhiteBackButtonItem];
     [self setTitle:@"Category"];
@@ -591,6 +594,9 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+    self.pickerController = [[UIImagePickerController alloc] init];
+    self.pickerController.delegate = self;
+    
     switch (buttonIndex) {
             
         case 0:
@@ -602,30 +608,28 @@
         default:
             break;
     }
+    
+    
 }
 
 -(void)takePhotoFromCamera{
     
-//    UIStoryboard *sb                    = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//    AVCamViewController *cameraView     = [sb instantiateViewControllerWithIdentifier:@"cameraView"];
-//    cameraView.previousController       = self;
-//    cameraView.viewController           = RegistrationController;
-//    
-//    [self presentViewController:cameraView
-//                       animated:YES
-//                     completion:nil];
+    self.pickerController.sourceType    = UIImagePickerControllerSourceTypeCamera;
+    self.pickerController.allowsEditing = YES;
+    
+    [self presentViewController:self.pickerController
+                       animated:YES
+                     completion:NULL];
     
 }
 -(void)takePhotoFromAlbum{
     
-//    self.photoPicker               = [[UIImagePickerController alloc] init];
-//    self.photoPicker.delegate      = self;
-//    self.photoPicker.sourceType    = UIImagePickerControllerSourceTypePhotoLibrary;
-//    self.photoPicker.allowsEditing = YES;
-//    
-//    [self presentViewController:photoPicker
-//                       animated:YES
-//                     completion:NULL];
+    self.pickerController.sourceType    = UIImagePickerControllerSourceTypePhotoLibrary;
+    self.pickerController.allowsEditing = YES;
+    
+    [self presentViewController:self.pickerController
+                       animated:YES
+                     completion:NULL];
 }
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
@@ -637,15 +641,32 @@
 //    [[SFDefaultUser sharedSFUserDefaults] setBSizedImage:[info valueForKey:UIImagePickerControllerOriginalImage]];
 //    [self.photoPicker dismissViewControllerAnimated:YES completion:nil];
 }
-
-- (void) selectAddressButtonDidPress{
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
     
 }
-- (void) taskCostButtonDidPress{
+- (void) selectAddressButtonDidPress{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    YDAddressViewController *controller =[storyboard instantiateViewControllerWithIdentifier:@"addressController"];
     
+    [self.navigationController pushViewController:controller
+                                         animated:YES];
+}
+- (void) taskCostButtonDidPress{
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    YDCostViewController *controller =[storyboard instantiateViewControllerWithIdentifier:@"costController"];
+    
+    [self.navigationController pushViewController:controller
+                                         animated:YES];
 }
 - (void) conditionsButtonDidPress{
     
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    YDAdditionalConViewController *controller =[storyboard instantiateViewControllerWithIdentifier:@"conditionsController"];
+    
+    [self.navigationController pushViewController:controller
+                                         animated:YES];
 }
 
 @end

@@ -46,6 +46,9 @@
 		EB8D990319018E8F0065A6F3 /* YDTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = EB8D990219018E8F0065A6F3 /* YDTextView.m */; };
 		EBFC2B7C1904595F007490AC /* camera.png in Resources */ = {isa = PBXBuildFile; fileRef = EBFC2B7B1904595F007490AC /* camera.png */; };
 		EBFC2B7E19045D46007490AC /* arrow_right_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = EBFC2B7D19045D46007490AC /* arrow_right_gray.png */; };
+		EBFC2B821904BA53007490AC /* YDAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC2B811904BA53007490AC /* YDAddressViewController.m */; };
+		EBFC2B861904BE1B007490AC /* YDCostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC2B851904BE1B007490AC /* YDCostViewController.m */; };
+		EBFC2B8A1905011E007490AC /* YDAdditionalConViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBFC2B891905011E007490AC /* YDAdditionalConViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +122,12 @@
 		EB8D990219018E8F0065A6F3 /* YDTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDTextView.m; sourceTree = "<group>"; };
 		EBFC2B7B1904595F007490AC /* camera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = camera.png; path = ImageSource/camera.png; sourceTree = "<group>"; };
 		EBFC2B7D19045D46007490AC /* arrow_right_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = arrow_right_gray.png; path = ImageSource/arrow_right_gray.png; sourceTree = "<group>"; };
+		EBFC2B801904BA53007490AC /* YDAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDAddressViewController.h; sourceTree = "<group>"; };
+		EBFC2B811904BA53007490AC /* YDAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDAddressViewController.m; sourceTree = "<group>"; };
+		EBFC2B841904BE1B007490AC /* YDCostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDCostViewController.h; sourceTree = "<group>"; };
+		EBFC2B851904BE1B007490AC /* YDCostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDCostViewController.m; sourceTree = "<group>"; };
+		EBFC2B881905011D007490AC /* YDAdditionalConViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YDAdditionalConViewController.h; sourceTree = "<group>"; };
+		EBFC2B891905011E007490AC /* YDAdditionalConViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YDAdditionalConViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +252,9 @@
 		EB008EE818EDEBB300F340FB /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				EBFC2B871904F31B007490AC /* AdditionalConditonsController */,
+				EBFC2B831904BE02007490AC /* CostController */,
+				EBFC2B7F1904BA1A007490AC /* AddressMapController */,
 				EB8D98FC190186F60065A6F3 /* TaskDetailsController */,
 				EB5B2AC018FC7B1F00C3119A /* SettingsController */,
 				EB008F1918EE8E3600F340FB /* MyTasksController */,
@@ -437,6 +449,33 @@
 			name = YDTextView;
 			sourceTree = "<group>";
 		};
+		EBFC2B7F1904BA1A007490AC /* AddressMapController */ = {
+			isa = PBXGroup;
+			children = (
+				EBFC2B801904BA53007490AC /* YDAddressViewController.h */,
+				EBFC2B811904BA53007490AC /* YDAddressViewController.m */,
+			);
+			name = AddressMapController;
+			sourceTree = "<group>";
+		};
+		EBFC2B831904BE02007490AC /* CostController */ = {
+			isa = PBXGroup;
+			children = (
+				EBFC2B841904BE1B007490AC /* YDCostViewController.h */,
+				EBFC2B851904BE1B007490AC /* YDCostViewController.m */,
+			);
+			name = CostController;
+			sourceTree = "<group>";
+		};
+		EBFC2B871904F31B007490AC /* AdditionalConditonsController */ = {
+			isa = PBXGroup;
+			children = (
+				EBFC2B881905011D007490AC /* YDAdditionalConViewController.h */,
+				EBFC2B891905011E007490AC /* YDAdditionalConViewController.m */,
+			);
+			name = AdditionalConditonsController;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -543,6 +582,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB008EF218EDFF3B00F340FB /* YDTasksViewController.m in Sources */,
+				EBFC2B8A1905011E007490AC /* YDAdditionalConViewController.m in Sources */,
 				EB008F0718EE0C6700F340FB /* YDProfileViewController.m in Sources */,
 				EB5B2AC318FC7B4C00C3119A /* YDSettingsViewController.m in Sources */,
 				EB008EBE18EDE77200F340FB /* main.m in Sources */,
@@ -555,7 +595,9 @@
 				EB5B2AC718FC7E6F00C3119A /* YDCategoryCell.m in Sources */,
 				EB8D990319018E8F0065A6F3 /* YDTextView.m in Sources */,
 				EB008EC818EDE77300F340FB /* YDViewController.m in Sources */,
+				EBFC2B861904BE1B007490AC /* YDCostViewController.m in Sources */,
 				EB008EFE18EE07AF00F340FB /* UIImage+Overlay.m in Sources */,
+				EBFC2B821904BA53007490AC /* YDAddressViewController.m in Sources */,
 				EB008EFA18EE079C00F340FB /* UIImage+Scale.m in Sources */,
 				EB008F1818EE810D00F340FB /* YDCategoriesViewController.m in Sources */,
 				EB008EC218EDE77200F340FB /* YDAppDelegate.m in Sources */,

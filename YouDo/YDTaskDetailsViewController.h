@@ -8,7 +8,7 @@
 
 #import "YDViewController.h"
 
-@interface YDTaskDetailsViewController : YDViewController <UIScrollViewDelegate>
+@interface YDTaskDetailsViewController : YDViewController <UIScrollViewDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 
 

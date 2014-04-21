@@ -203,10 +203,28 @@
             </objects>
             <point key="canvasLocation" x="2454" y="-1398"/>
         </scene>
-        <!--View Controller-->
+        <!--Cost View Controller-->
+        <scene sceneID="KeS-j6-Jij">
+            <objects>
+                <viewController storyboardIdentifier="costController" id="38v-Fl-azm" customClass="YDCostViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b21-YW-VVQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="DW1-f5-pu4"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3gY-oD-J1v">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3YV-ZN-wTZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2830" y="-1398"/>
+        </scene>
+        <!--Address View Controller-->
         <scene sceneID="5lA-ap-8s3">
             <objects>
-                <viewController id="Vc8-0N-Pck" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="addressController" id="Vc8-0N-Pck" customClass="YDAddressViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hzI-aR-2b2"/>
                         <viewControllerLayoutGuide type="bottom" id="qz0-sa-ub2"/>
@@ -214,12 +232,21 @@
                     <view key="view" contentMode="scaleToFill" id="TGj-en-bMK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3jP-0E-nSE">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="3jP-0E-nSE" id="uyf-fx-mWY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4EF-Fu-gPu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2844" y="-1398"/>
+            <point key="canvasLocation" x="2830" y="-2104"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="r1Q-eW-XWo">
@@ -264,6 +291,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iXC-fC-Wz5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2454" y="-706"/>
+        </scene>
+        <!--Additional Con View Controller-->
+        <scene sceneID="Vdd-vd-Eeo">
+            <objects>
+                <viewController storyboardIdentifier="conditionsController" id="FPV-n3-VYv" customClass="YDAdditionalConViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L5W-xx-T0M"/>
+                        <viewControllerLayoutGuide type="bottom" id="YqO-VU-Z1j"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ssw-EX-GB6">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Yck-Vk-QOB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2830" y="-706"/>
         </scene>
         <!--My Task View Controller - Item 1-->
         <scene sceneID="u5l-pC-rb9">

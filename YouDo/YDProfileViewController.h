@@ -8,6 +8,6 @@
 
 #import "YDViewController.h"
 
-@interface YDProfileViewController : YDViewController
+@interface YDProfileViewController : YDViewController <UITableViewDataSource, UITableViewDelegate>
 
 @end

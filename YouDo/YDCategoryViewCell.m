@@ -20,7 +20,7 @@
         [self.contentView addSubview:self.iconImage];
         
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(65, 0, 195, 60)];
-        self.titleLabel.font = [UIFont boldSystemFontOfSize:22.0f];
+        self.titleLabel.font = [UIFont boldSystemFontOfSize:16.0f];
         
         [self.contentView addSubview:self.titleLabel];
         

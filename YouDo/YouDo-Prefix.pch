@@ -23,3 +23,5 @@
  */
 #define MAIN_COLOR  [UIColor colorWithRed:59.0/255.0 green:89.0/255.0 blue:152.0/255.0 alpha:1.0]
 #define MAJOR_COLOR [UIColor whiteColor]
+
+#define API_LINK @"http://youdo.herokuapp.com/"

@@ -9,6 +9,9 @@
 #import "YDTasksViewController.h"
 #import "YDTaskViewCell.h"
 #import <MapKit/MapKit.h>
+#import "MBProgressHUD.h"
+#import "AFNetworking.h"
+#import "UIProgressView+AFNetworking.h"
 
 @interface YDTasksViewController ()
 
@@ -19,6 +22,7 @@
 @property DataRepresentingType representingType;
 @property (nonatomic, strong) MKMapView *map;
 @property (nonatomic) BOOL mapSelected;
+@property (nonatomic) NSArray *taskList;
 
 @end
 
@@ -38,6 +42,8 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    self.taskList = [[NSArray alloc] init];
+    
     self.mapSelected = NO;
     
     CGRect mapFrame = self.tasksTableView.frame;
@@ -46,13 +52,19 @@
     
     self.mapSelected = NO;
 
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self
+                       action:@selector(downloadTasks:)
+             forControlEvents:UIControlEventValueChanged];
+    
+    [self.tasksTableView addSubview:refreshControl];
     self.tasksTableView.delegate   = self;
     self.tasksTableView.dataSource = self;
     
     self.headerView.backgroundColor = MAIN_COLOR;
     
     [self.segmentedControl addTarget:self
-                              action:@selector(segmentedControlDidChange:)
+                              action:@selector(downloadTasks:)
                     forControlEvents:UIControlEventValueChanged];
     
     [self.segmentedControl setTitle:NSLocalizedString(@"Distance", nil) forSegmentAtIndex:0];
@@ -80,6 +92,49 @@
     
     [self.navigationController.navigationBar setTranslucent:NO];
     [self.navigationController.navigationBar setShadowImage:[[UIImage imageNamed:@"1x1.png"] imageWithColor:MAIN_COLOR]];
+    
+    [self downloadTasks:nil];
+    
+}
+
+- (void) downloadTasks: (id) sender{
+    MBProgressHUD *hud;
+    UIRefreshControl *refresher;
+    
+    if(!sender){
+        hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"Loading";
+    }
+    else{
+        refresher = (UIRefreshControl *)sender;
+    }
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSString *link = [NSString stringWithFormat:@"%@%@",API_LINK,@"api/jobs"];
+    
+    [manager GET:link
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSLog(@"[AFNetworking api/jobs]: %@", responseObject);
+
+             self.taskList = (NSArray *)responseObject;
+             [self.tasksTableView reloadData];
+             
+             if(!sender){
+                 [hud hide:YES];
+             }
+             else{
+                 [refresher endRefreshing];
+             }
+             
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"Error: %@", error);
+             [hud hide:YES];
+         }];
+    
 }
 
 - (void) presentCategory: (id) sender{
@@ -177,7 +232,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 30;
+    return [self.taskList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -188,16 +243,15 @@
         cell = [[YDTaskViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"eventCell"];
     }
     
-    if (self.representingType == byDistance)
-        cell.titleLabel.text = @"Need iOS developer with Mac :D";
-    else if (self.representingType == byPrice)
-        cell.titleLabel.text = @"Need Slaves for some black job";
+    NSDictionary *info = [self.taskList objectAtIndex:indexPath.row];
     
-    cell.subtitleLabel.text = @"Open until 17:00, 17 April";
     
     cell.iconImage.backgroundColor = [UIColor orangeColor];
+    cell.titleLabel.text = [info objectForKey:@"title"];
     
-    cell.priceLabel.text = @"20000";
+    cell.subtitleLabel.text = [info objectForKey:@"should_impl_at"];
+    
+    cell.priceLabel.text = [[info objectForKey:@"price"] stringValue];
     
     return cell;
 }

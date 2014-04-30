@@ -7,6 +7,7 @@
 //
 
 #import "YDMyTaskViewController.h"
+#import "YDTaskViewCell.h"
 
 @interface YDMyTaskViewController ()
 @property (weak, nonatomic) IBOutlet UIView *headerView;
@@ -43,8 +44,8 @@
                     forControlEvents:UIControlEventValueChanged];
 
     self.segmentedControl.tintColor = MAJOR_COLOR;
-    [self.segmentedControl setTitle:NSLocalizedString(@"Distance", nil) forSegmentAtIndex:0];
-    [self.segmentedControl setTitle:NSLocalizedString(@"Price", nil) forSegmentAtIndex:1];
+    [self.segmentedControl setTitle:NSLocalizedString(@"In Process", nil) forSegmentAtIndex:0];
+    [self.segmentedControl setTitle:NSLocalizedString(@"Done", nil) forSegmentAtIndex:1];
     
     [self setTitle:NSLocalizedString(@"My Tasks", nil)];
     
@@ -98,18 +99,28 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = nil;
+    YDTaskViewCell *cell = nil;
     cell = [tableView dequeueReusableCellWithIdentifier:@"eventCell"];
     
     if(!cell){
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"eventCell"];
+        cell = [[YDTaskViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"eventCell"];
     }
     
-    if (self.representingType == MyTasks)
-        cell.textLabel.text = @"My Tasks";
-    else if (self.representingType == ExecutingTasks)
-        cell.textLabel.text = @"Executing Tasks";
+//    if (self.representingType == MyTasks)
+//        cell.textLabel.text = @"My Tasks";
+//    else if (self.representingType == ExecutingTasks)
+//        cell.textLabel.text = @"Executing Tasks";
     
+    if (self.representingType == MyTasks)
+        cell.titleLabel.text = @"My Tasks";
+    else if (self.representingType == ExecutingTasks)
+        cell.titleLabel.text = @"Executing Tasks";
+    
+    cell.subtitleLabel.text = @"Open until 17:00, 17 April";
+    
+    cell.iconImage.backgroundColor = [UIColor orangeColor];
+    
+    cell.priceLabel.text = @"20000";
     return cell;
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

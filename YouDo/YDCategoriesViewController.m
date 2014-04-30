@@ -8,8 +8,12 @@
 
 #import "YDCategoriesViewController.h"
 #import "YDCategoryViewCell.h"
+#import "MBProgressHUD.h"
+#import "AFNetworking.h"
+
 @interface YDCategoriesViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *categoriesTableView;
+@property (nonatomic) NSArray *categoriesList;
 
 @end
 
@@ -27,16 +31,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
-    UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Cancel", nil)
+	
+    self.categoriesList = [[NSArray alloc] init];
+    
+    UIBarButtonItem *cancel = [[UIBarButtonItem alloc]
+                               initWithTitle:NSLocalizedString(@"Cancel", nil)
                                                                style:UIBarButtonItemStylePlain
                                                               target:self
                                                               action:@selector(dissmissControllerView)];
+    
+    
+    
     self.navigationItem.rightBarButtonItem = cancel;
     cancel.tintColor = MAJOR_COLOR;
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self
+                       action:@selector(downloadCategories:)
+             forControlEvents:UIControlEventValueChanged];
     
+    [self.categoriesTableView addSubview:refreshControl];
     self.categoriesTableView.dataSource = self;
     self.categoriesTableView.delegate   = self;
+    
+    [self downloadCategories:nil];
 }
 - (void) dissmissControllerView{
     [self dismissViewControllerAnimated:YES
@@ -47,9 +64,47 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (void) downloadCategories: (id) sender{
+    MBProgressHUD *hud;
+    UIRefreshControl *refresher;
+    
+    if(!sender){
+        hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeIndeterminate;
+        hud.labelText = @"Loading";
+    }
+    else{
+        refresher = (UIRefreshControl *)sender;
+    }
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    
+    NSString *link = [NSString stringWithFormat:@"%@%@",API_LINK,@"api/categories"];
+    
+    [manager GET:link
+      parameters:nil
+         success:^(AFHTTPRequestOperation *operation, id responseObject) {
+             NSLog(@"[AFNetworking api/jobs]: %@", responseObject);
+             
+             self.categoriesList = (NSArray *)responseObject;
+             [self.categoriesTableView reloadData];
+             
+             if(!sender){
+                 [hud hide:YES];
+             }
+             else{
+                 [refresher endRefreshing];
+             }
+             
+         }
+         failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+             NSLog(@"Error: %@", error);
+             [hud hide:YES];
+         }];
 
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 30;
+    return [self.categoriesList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -60,11 +115,11 @@
         cell = [[YDCategoryViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"eventCell"];
     }
 
-
+    NSDictionary *info = [self.categoriesList objectAtIndex:indexPath.row];
     
     cell.iconImage.backgroundColor = [UIColor orangeColor];
     
-    cell.titleLabel.text = @"Category";
+    cell.titleLabel.text = [info objectForKey:@"title"];
     
     return cell;
 }

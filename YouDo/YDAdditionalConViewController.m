@@ -81,7 +81,7 @@
     label = [[UILabel alloc] initWithFrame:CGRectMake(10, offset, 300, 60)];
     label.numberOfLines = 5;
     label.textColor = [UIColor darkGrayColor];
-    label.text = NSLocalizedString(@"Assignments can only be seen and performers will be hidden after", nil);
+    label.text = NSLocalizedString(@"Assignments can only be seen by performers and will be hidden after", nil);
     label.textAlignment = NSTextAlignmentCenter;
     [self.view addSubview:label];
 
